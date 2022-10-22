@@ -1,10 +1,9 @@
 class Marquee {
     constructor(marqueeElement) {
         this.marqueeElement = marqueeElement;
-        this.getMarqueeData();
     }
 
-    async getMarqueeData() {
+    async load() {
         try {
             this.marqueeElement.style.visibility = "hidden";
             const response = await fetch("https://stock-exchange-dot-full-stack-course-services.ew.r.appspot.com/api/v3/stock/list");
