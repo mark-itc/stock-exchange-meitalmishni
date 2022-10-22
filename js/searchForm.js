@@ -52,10 +52,10 @@ class SearchForm {
     async runSearch() {
         this.searchQuery = this.searchFormElement.querySelector("#search-input").value;
 
-        const container = document.getElementById("search-result");
+        const searchResult = document.getElementById("search-result");
         const loader = document.getElementById("loader");
 
-        container.innerHTML = "";
+        searchResult.innerHTML = "";
         loader.classList.add("spinner-border");
         const results = await this.getSearchData();
 
