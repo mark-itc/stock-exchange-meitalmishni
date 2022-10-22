@@ -13,7 +13,7 @@ async function getCompanyHistory(symbol) {
     }
 }
 
-async function getCompanyData(symbol) {
+export async function getCompanyData(symbol) {
     try {
         const url =
             "https://stock-exchange-dot-full-stack-course-services.ew.r.appspot.com/api/v3/company/profile/" +
