@@ -62,3 +62,52 @@
     height: 30px;
     margin-right: 10px;
 }
+
+.marquee {
+    background: linear-gradient(-135deg, #9FCC9F, #74AB8D);
+    width: 98vw;
+    box-sizing: border-box;
+    padding: 1em;
+    color: white;
+    font-weight: 200;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    margin: 0 auto;
+    padding: 0;
+    height: 10vh;
+}
+
+.marquee-content {
+    display: flex;
+    animation: marquee 190s linear infinite;
+}
+
+.marquee-content:hover {
+    animation-play-state: paused;
+}
+
+.marquee-tag {
+    width: 150px;
+    margin: 0.5em;
+    padding: 0.5em;
+    background: rgba(255, 255, 255, .1);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all .2s ease;
+}
+
+.marquee:hover {
+    cursor: pointer;
+}
+
+@keyframes marquee {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translate(-50%);
+    }
+}

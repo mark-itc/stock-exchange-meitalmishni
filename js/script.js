@@ -3,6 +3,20 @@ import { getCompanyData } from './company.js';
 const container = document.getElementById("stock-exchange-container");
 const searchForm = document.getElementById("search-form");
 const loader = document.getElementById('loader');
+const marquee = document.getElementById("marquee");
+const marqueeUi = document.getElementById("marquee-content");
+
+async function getMarqueeData() {
+    try {
+        const url = "https://stock-exchange-dot-full-stack-course-services.ew.r.appspot.com/api/v3/stock/list";
+        const response = await fetch(url);
+        const result = response.json();
+
+        return result;
+    } catch (error) {
+        return false;
+    }
+}
 
 function createCompanyCard(name, symbol, image, percentage) {
     const cardDiv = document.createElement("div");
@@ -74,9 +88,22 @@ async function runSearch(e) {
     });
 }
 
-window.onload = () => {
+window.onload = async () => {
     searchForm.addEventListener("submit", (e) => {
         e.preventDefault();
         runSearch();
+    });
+
+    marquee.style.visibility = "hidden";
+    const marqueeData = await getMarqueeData();
+    marquee.style.visibility = "visible";
+
+    const marqueeDataSlice = marqueeData.slice(0, 50);
+
+    marqueeDataSlice.forEach((item) => {
+        const div = document.createElement("div");
+        div.classList.add("marquee-tag");
+        div.innerHTML = item.symbol + " $" + item.price;
+        marqueeUi.append(div);
     });
 }
